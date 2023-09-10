@@ -19,6 +19,8 @@ def search_error(filename):
         return "stderr.log does not exist"
     with open(filename) as f:
         for line in f:
+            #remove `can yield errors.` from line
+            line = line.replace("can yield errors.", "")
             for s in ["Error", "error", "ERROR"]:
                 idx = line.find(s)
                 if idx != -1:
